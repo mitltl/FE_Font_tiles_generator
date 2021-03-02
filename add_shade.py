@@ -1,12 +1,10 @@
 ﻿import cv2
-for i in range(0,719):
-	for j in range(0,10):
-		picx = cv2.imread("%d,%d.png"%(i+1,j+2))
-		print("%d,%d.png"%(i+1,j+2))
-		for k in range(0,16):
-			for l in range(0,15):
-				if (picx[k,l] == [40,40,40]).all() and (picx[k,l+1] =  = [224,224,224]).all():
-					picx[k,l+1] = [167, 168, 168]
-		#picx = cv2.cvtColor(picx,cv2.COLOR_BGR2GRAY)#8位灰色
-		cv2.imwrite("%d,%d.png" %(i+1,j+2),picx)
+import os
+for file in os.listdir("."):
+    picx = cv2.imread(file)
+    for k in range(0,16):
+        for l in range(0,15):
+            if (picx[k,l] == [167,168,168]).all() :
+                picx[k,l+1] = [248, 248, 248]#火花狼组圣魔为字阴影为[167,168,168]
+    cv2.imwrite(file,picx)
 
